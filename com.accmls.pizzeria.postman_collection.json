@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "140b7853-d694-47fe-8c72-12a69cc824f0",
+		"name": "com.accmls.pizzeria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23103913"
+	},
+	"item": [
+		{
+			"name": "submitToppings_OK",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"testCustomer1@mail.com\",\n  \"toppings\": [\"Pepperoni\", \"Mushroom\", \"Extra cheese\", \"Sausage\", \"Black olives\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/toppings",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"toppings"
+					],
+					"query": [
+						{
+							"key": "customer1",
+							"value": "{\n  \"email\": \"testCustomer1@mail.com\",\n  \"toppings\": [\"Pepperoni\", \"Mushroom\", \"Extra cheese\", \"Sausage\", \"Black olives\"]\n}",
+							"disabled": true
+						},
+						{
+							"key": "customer2",
+							"value": "{\n  \"email\": \"testCustomer2@mail.com\",\n  \"toppings\": [\"Extra cheese\", \"Sausage\", \"Black olives\"]\n}",
+							"disabled": true
+						},
+						{
+							"key": "customer3",
+							"value": "{\n  \"email\": \"testCustomer3@mail.com\",\n  \"toppings\": [\"Extra cheese\"]\n}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "submitToppings_NOK_WrongEmailFormat",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"mail.com\",\n  \"toppings\": [\"Pepperoni\", \"Mushroom\", \"Extra cheese\", \"Sausage\", \"Black olives\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/toppings",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"toppings"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "submitToppings_NOK_EmptyToppings",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"testCustomer1@mail.com\",\n  \"toppings\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/toppings",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"toppings"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllSubmittedResults",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/toppings",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"toppings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getSubmittedResultsByEmail_OK",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/toppings/testCustomer1@mail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"toppings",
+						"testCustomer1@mail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getSubmittedResultsByEmail_NOK_WrongEmailFormat",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/toppings/mail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"toppings",
+						"mail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getSubmittedResultsByEmail_NOK_NoSuchEmail",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/toppings/unknown@mail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"toppings",
+						"unknown@mail.com"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
